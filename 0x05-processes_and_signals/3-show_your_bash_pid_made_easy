@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# This script lists PID and name for exact “bash” processes, excluding itself
+
+# loop over exact matches for “bash”
+for pid in $(pgrep -x bash); do
+  # skip the PID of this running script
+  if [ "$pid" -ne "$$" ]; then
+    echo "$pid bash"
+  fi
+done
